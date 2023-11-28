@@ -1,8 +1,8 @@
-package com.shulzhenko.Validation;
+package com.shulzhenko.Services;
 
 import javax.swing.*;
 
-public class ValidationCheck {
+public class ValidateService {
 
     public static String validateText(String text, JFrame frame) {
         if (text.isEmpty()) {

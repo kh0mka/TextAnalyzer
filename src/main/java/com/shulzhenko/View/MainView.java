@@ -1,7 +1,8 @@
 package com.shulzhenko.View;
 
+import com.shulzhenko.Model.ResultModel;
 import com.shulzhenko.Services.*;
-import com.shulzhenko.Validation.ValidationCheck;
+import com.shulzhenko.Services.ValidateService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -146,7 +147,7 @@ public class MainView {
 
     private static void performAnalysis(JTextArea inputTextArea, JFrame frame) {
         String text = inputTextArea.getText();
-        String validationError = ValidationCheck.validateText(text, frame);
+        String validationError = ValidateService.validateText(text, frame);
         if (validationError != null)
         {
             logAnalysisResult(text);
@@ -159,18 +160,18 @@ public class MainView {
     }
 
     private static void updateLabels(String text) {
-        ResultService resultService = new ResultService();
-        resultService.getResult(text);
+        ResultModel resultModel = new ResultModel();
+        resultModel.getResults(text);
 
-        updateLabel(charCountLabel, "Количество символов: ", resultService.charCount);
-        updateLabel(spaceCountLabel, "Количество пробелов: ", resultService.spaceCount);
-        updateLabel(punctuationCountLabel, "Количество знаков препинания: ", resultService.punctuationCount);
-        updateLabel(errorCountLabel, "Количество орфографических ошибок: ", resultService.spellingErrorCount);
-        updateLabel(countSentencesLabel, "Количество предложений: ", resultService.countSentences);
-        updateLabel(countWordsLabel, "Количество слов: ", resultService.countWords);
-        updateLabel(countNarrativeSentencesLabel, "Количество повествовательных предложений: ", resultService.countNarrativeSentences);
-        updateLabel(countInterrogativeSentencesLabel, "Количество вопросительных предложений: ", resultService.countInterrogativeSentences);
-        updateLabel(countExclamatorySentencesLabel, "Количество восклицательных предложений: ", resultService.countExclamatorySentences);
+        updateLabel(charCountLabel, "Количество символов: ", resultModel.charCount);
+        updateLabel(spaceCountLabel, "Количество пробелов: ", resultModel.spaceCount);
+        updateLabel(punctuationCountLabel, "Количество знаков препинания: ", resultModel.punctuationCount);
+        updateLabel(errorCountLabel, "Количество орфографических ошибок: ", resultModel.spellingErrorCount);
+        updateLabel(countSentencesLabel, "Количество предложений: ", resultModel.countSentences);
+        updateLabel(countWordsLabel, "Количество слов: ", resultModel.countWords);
+        updateLabel(countNarrativeSentencesLabel, "Количество повествовательных предложений: ", resultModel.countNarrativeSentences);
+        updateLabel(countInterrogativeSentencesLabel, "Количество вопросительных предложений: ", resultModel.countInterrogativeSentences);
+        updateLabel(countExclamatorySentencesLabel, "Количество восклицательных предложений: ", resultModel.countExclamatorySentences);
         updateLabel(styleLabel, "Стиль текста: ", TextStyleService.detectStyle(text));
 
         StringJoiner errorsAndReplacements = new StringJoiner("\n");
@@ -181,20 +182,20 @@ public class MainView {
     }
 
     public static void logAnalysisResult(String text) {
-        ResultService resultService = new ResultService();
-        resultService.getResult(text);
+        ResultModel resultModel = new ResultModel();
+        resultModel.getResults(text);
 
         LogService.logAnalysis(
                 text,
-                resultService.charCount,
-                resultService.spaceCount,
-                resultService.punctuationCount,
-                resultService.spellingErrorCount,
-                resultService.countSentences,
-                resultService.countWords,
-                resultService.countNarrativeSentences,
-                resultService.countInterrogativeSentences,
-                resultService.countExclamatorySentences
+                resultModel.charCount,
+                resultModel.spaceCount,
+                resultModel.punctuationCount,
+                resultModel.spellingErrorCount,
+                resultModel.countSentences,
+                resultModel.countWords,
+                resultModel.countNarrativeSentences,
+                resultModel.countInterrogativeSentences,
+                resultModel.countExclamatorySentences
         );
     }
 

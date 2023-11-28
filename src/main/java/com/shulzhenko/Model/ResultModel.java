@@ -1,5 +1,9 @@
-package com.shulzhenko.Services;
-public class ResultService {
+package com.shulzhenko.Model;
+
+import com.shulzhenko.Services.CountService;
+import com.shulzhenko.Services.SpellCheckService;
+
+public class ResultModel {
     public int charCount;
     public int spaceCount;
     public int punctuationCount;
@@ -9,7 +13,7 @@ public class ResultService {
     public int countNarrativeSentences;
     public int countInterrogativeSentences;
     public int countExclamatorySentences;
-    public void getResult(String text) {
+    public void getResults(String text) {
         this.charCount = CountService.countCharacters(text);
         this.spaceCount = CountService.countSpaces(text);
         this.punctuationCount = CountService.countPunctuation(text);
