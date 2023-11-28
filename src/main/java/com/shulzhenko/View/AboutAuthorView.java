@@ -22,7 +22,7 @@ public class AboutAuthorView extends JFrame {
         JPanel panel=new JPanel();
 
 
-        iconAuthor = new ImageIcon(getClass().getResource("/images/author.jpg"));
+        iconAuthor = new ImageIcon(getClass().getResource("/images/Author.jpg"));
         jlblImage = new JLabel(iconAuthor);
         panel.add(jlblImage).setBounds(15,50,300,400);
 

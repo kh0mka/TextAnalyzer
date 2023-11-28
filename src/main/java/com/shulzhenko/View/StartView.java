@@ -90,9 +90,13 @@ public class StartView extends JFrame {
         jlblCity.setFont(font);
         panel.add(jlblCity).setBounds(330,535,200,20);
 
-//        iconSort = new ImageIcon(getClass().getResource("/images/startviewarrow.png"));
-//        jlblImage = new JLabel(iconSort);
-//        panel.add(jlblImage).setBounds(10,280,400,240);
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/images/Icon.png"));
+        Image originalImage = originalIcon.getImage();
+        Image resizedImage = originalImage.getScaledInstance(256, 256, Image.SCALE_SMOOTH);
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
+
+        JLabel jlblImage = new JLabel(resizedIcon);
+        panel.add(jlblImage).setBounds(60, 280, 256, 256);
 
         jbtnNext = new JButton("Далее");
 
