@@ -3,69 +3,49 @@ package com.shulzhenko.View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class AboutAuthorView extends JFrame {
-    private JLabel jlblAuthor;
-    private JLabel jlblGroup;
-    private JLabel jlblName;
-    private JLabel jlblEmail;
+    private JLabel jlblAuthor, jlblGroup, jlblName, jlblEmail, jlblImage;
     private JButton jbtnBack;
-    private JLabel jlblImage;
     private ImageIcon iconAuthor;
 
-    /**
-     * Constructor for creating an object
-     */
-    public AboutAuthorView(){
-        JFrame frame=new JFrame("Об авторе");
-        JPanel panel=new JPanel();
-
-
-        iconAuthor = new ImageIcon(getClass().getResource("/images/Author.jpg"));
-        jlblImage = new JLabel(iconAuthor);
-        panel.add(jlblImage).setBounds(15,50,300,400);
-
-        Font font=new Font("Verdana",Font.BOLD,16);
-        jlblAuthor =new JLabel("Об авторе");
-        jlblAuthor.setFont(font);
-        panel.add(jlblAuthor).setBounds(110,10,100,20);
-
-        font=new Font("Verdana",Font.BOLD,14);
-        jlblGroup =new JLabel("Студент группы 10702221");
-        jlblGroup.setFont(font);
-        panel.add(jlblGroup).setBounds(30,460,500,20);
-
-        jlblName =new JLabel("Шульженко Максим Александрович");
-        jlblName.setFont(font);
-        panel.add(jlblName).setBounds(30,490,500,20);
-
-        jlblEmail =new JLabel("shulzhenko-m@inbox.ru");
-        jlblEmail.setFont(font);
-        panel.add(jlblEmail).setBounds(30,520,500,20);
-
-        jbtnBack =new JButton("Назад");
-        jbtnBack.setFont(font);
-        panel.add(jbtnBack).setBounds(30,560,270,30);
-
-        jbtnBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new MainView();
-                frame.setVisible(false);
-            }
-        });
-
+    public AboutAuthorView() {
+        JFrame frame = new JFrame("Об авторе");
+        JPanel panel = new JPanel();
         panel.setLayout(null);
-        frame.add(panel);
-
-
-
         panel.setBackground(new Color(245, 245, 220));
+
+        iconAuthor = new ImageIcon(new ImageIcon(getClass().getResource("/images/Author.jpg"))
+                .getImage().getScaledInstance(300, 400, Image.SCALE_SMOOTH));
+        jlblImage = new JLabel(iconAuthor);
+        jlblImage.setBounds(15, 50, 300, 400);
+        panel.add(jlblImage);
+
+        setupLabel(jlblAuthor = new JLabel("Об авторе"), new Font("Verdana", Font.BOLD, 16), 110, 10, 100, 20, panel);
+        setupLabel(jlblGroup = new JLabel("Студент группы 10702221"), new Font("Verdana", Font.BOLD, 14), 30, 460, 500, 20, panel);
+        setupLabel(jlblName = new JLabel("Шульженко Максим Викторович"), new Font("Verdana", Font.BOLD, 14), 30, 490, 500, 20, panel);
+        setupLabel(jlblEmail = new JLabel("shulzhenko-m@inbox.ru"), new Font("Verdana", Font.BOLD, 14), 30, 520, 500, 20, panel);
+
+        jbtnBack = new JButton("Назад");
+        jbtnBack.setFont(new Font("Verdana", Font.BOLD, 14));
+        jbtnBack.setBounds(30, 560, 270, 30);
+        jbtnBack.addActionListener(e -> {
+            new MainView();
+            frame.setVisible(false);
+        });
+        panel.add(jbtnBack);
+
+        frame.add(panel);
         frame.setSize(345, 650);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setResizable(false);
+    }
+
+    private void setupLabel(JLabel label, Font font, int x, int y, int width, int height, JPanel panel) {
+        label.setFont(font);
+        label.setBounds(x, y, width, height);
+        panel.add(label);
     }
 }
