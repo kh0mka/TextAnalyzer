@@ -43,7 +43,7 @@ public class AboutAuthorView extends JFrame {
         frame.add(panel);
         frame.setSize(345, 650);
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         frame.setVisible(true);
         frame.setResizable(false);
     }
