@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.shulzhenko"},{"l":"com.shulzhenko.Model"},{"l":"com.shulzhenko.Services"},{"l":"com.shulzhenko.View"}];updateSearchResults();

@@ -2,13 +2,18 @@ package com.shulzhenko.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
+/**
+ * Класс AboutAuthorView представляет окно "Об авторе".
+ */
 public class AboutAuthorView extends JFrame {
     private JLabel jlblAuthor, jlblGroup, jlblName, jlblEmail, jlblImage;
     private JButton jbtnBack;
     private ImageIcon iconAuthor;
 
+    /**
+     * Конструктор класса AboutAuthorView, инициализирующий окно "Об авторе".
+     */
     public AboutAuthorView() {
         JFrame frame = new JFrame("Об авторе");
         JPanel panel = new JPanel();

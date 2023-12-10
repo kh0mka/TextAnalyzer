@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+/**
+ * Класс StartView представляет стартовое окно приложения для анализа текста.
+ * Это окно содержит информацию о курсовой работе, студенте, преподавателе и другие элементы.
+ */
 public class StartView extends JFrame {
     private JFrame jframe;
     private JLabel jlblBntu;
@@ -24,6 +29,11 @@ public class StartView extends JFrame {
     private JButton jbntExit;
     private ImageIcon iconSort;
 
+    /**
+     * Конструктор класса StartView инициализирует и отображает стартовое окно приложения.
+     * Окно содержит информацию о курсовой работе, студенте и преподавателе, а также кнопки для перехода к основному окну
+     * и выхода из приложения.
+     */
     public StartView(){
         jframe = new JFrame("Курсовой проект");
 

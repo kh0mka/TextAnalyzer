@@ -2,6 +2,10 @@ package com.shulzhenko.View;
 
 import javax.swing.*;
 import java.awt.*;
+
+/**
+ * Класс AboutAppView представляет окно "О программе".
+ */
 public class AboutAppView extends JFrame {
     private JTextArea textArea;
     private JLabel titleLabel;
@@ -9,6 +13,9 @@ public class AboutAppView extends JFrame {
     private Font mainFont;
     private Font titleFont;
 
+    /**
+     * Конструктор класса AboutAppView, инициализирующий окно "О программе".
+     */
     public AboutAppView() {
         setTitle("О программе");
         setSize(600, 260);

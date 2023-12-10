@@ -3,13 +3,16 @@ package com.shulzhenko.View;
 import com.shulzhenko.Model.ResultModel;
 import com.shulzhenko.Services.*;
 import com.shulzhenko.Services.ValidateService;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
 import java.util.StringJoiner;
 
+/**
+ * Главное окно приложения для анализа текста.
+ */
 public class MainView {
+    // Поля и методы класса
     private static JLabel charCountLabel;
     private static JLabel spaceCountLabel;
     private static JLabel punctuationCountLabel;
@@ -23,6 +26,9 @@ public class MainView {
     private static JTextArea wordsWithErrorsArea;
     private static final Font MAIN_FONT = new Font("Arial", Font.PLAIN, 18);
 
+    /**
+     * Метод, создающий и отображающий графический интерфейс приложения.
+     */
     public static void createAndShowGUI() {
         JFrame frame = initializeFrame();
         JTextArea inputTextArea = initializeTextArea();
@@ -42,6 +48,11 @@ public class MainView {
         frame.setVisible(true);
     }
 
+    /**
+     * Инициализирует главное окно приложения.
+     *
+     * @return Готовое главное окно приложения.
+     */
     private static JFrame initializeFrame() {
         JFrame frame = new JFrame("Анализ текста");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,6 +78,11 @@ public class MainView {
         return frame;
     }
 
+    /**
+     * Инициализирует текстовую область для ввода текста.
+     *
+     * @return Готовая текстовая область.
+     */
     private static JTextArea initializeTextArea() {
         JTextArea inputTextArea = new JTextArea();
         inputTextArea.setFont(MAIN_FONT);
@@ -75,6 +91,14 @@ public class MainView {
         return inputTextArea;
     }
 
+    /**
+     * Настраивает главную панель приложения.
+     *
+     * @param mainPanel           Главная панель приложения.
+     * @param inputTextArea       Текстовая область для ввода текста.
+     * @param buttonPanel         Панель с кнопками.
+     * @param labelsPanel         Панель с метками.
+     */
     private static void setupMainPanel(JPanel mainPanel, JTextArea inputTextArea, JPanel buttonPanel, JPanel labelsPanel) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -102,6 +126,11 @@ public class MainView {
         labelsPanel.setBackground(bgColor);
     }
 
+    /**
+     * Инициализирует панель с метками и устанавливает начальные значения меткам.
+     *
+     * @return Готовая панель с метками.
+     */
     private static JPanel initializeLabelsPanel() {
         initializeLabels();
 
@@ -121,6 +150,9 @@ public class MainView {
         return labelsPanel;
     }
 
+    /**
+     * Инициализирует метки для отображения результатов анализа.
+     */
     private static void initializeLabels() {
         charCountLabel = new JLabel("Количество символов: ");
         spaceCountLabel = new JLabel("Количество пробелов: ");
@@ -145,6 +177,12 @@ public class MainView {
         styleLabel.setFont(MAIN_FONT);
     }
 
+    /**
+     * Выполняет анализ введенного текста и обновляет метки с результатами анализа.
+     *
+     * @param inputTextArea Текстовая область для ввода текста.
+     * @param frame         Фрейм приложения.
+     */
     private static void performAnalysis(JTextArea inputTextArea, JFrame frame) {
         String text = inputTextArea.getText();
         String validationError = ValidateService.validateText(text, frame);
@@ -159,6 +197,11 @@ public class MainView {
         }
     }
 
+    /**
+     * Обновляет метки и текстовую область с результатами анализа текста.
+     *
+     * @param text Текст для анализа.
+     */
     private static void updateLabels(String text) {
         ResultModel resultModel = new ResultModel();
         resultModel.getResults(text);
@@ -181,6 +224,11 @@ public class MainView {
         wordsWithErrorsArea.setText("Предложенные замены слов: \n" + errorsAndReplacements.toString());
     }
 
+    /**
+     * Логирует результаты анализа текста.
+     *
+     * @param text Введенный текст.
+     */
     public static void logAnalysisResult(String text) {
         ResultModel resultModel = new ResultModel();
         resultModel.getResults(text);
@@ -199,6 +247,13 @@ public class MainView {
         );
     }
 
+    /**
+     * Обновляет текст метки с заданным префиксом и значением.
+     *
+     * @param label  Метка для обновления.
+     * @param prefix Префикс текста метки.
+     * @param value  Значение для отображения.
+     */
     private static void updateLabel(JLabel label, String prefix, Object value) {
         label.setText(prefix + value.toString());
     }

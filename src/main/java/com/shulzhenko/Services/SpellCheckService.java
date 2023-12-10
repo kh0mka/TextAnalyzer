@@ -10,7 +10,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс SpellCheckService предоставляет методы для проверки орфографии в тексте.
+ */
 public class SpellCheckService {
+    /**
+     * Метод для подсчета количества орфографических ошибок в тексте.
+     *
+     * @param text Исходный текст.
+     * @return Количество орфографических ошибок в тексте.
+     */
     public static int countSpellingErrors(String text) {
         int errorCount = 0;
         try {
@@ -37,6 +46,13 @@ public class SpellCheckService {
         return errorCount;
     }
 
+    /**
+     * Метод для подсчета различий между двумя словами.
+     *
+     * @param original  Исходное слово.
+     * @param corrected Исправленное слово.
+     * @return Количество различий между словами.
+     */
     private static int countLetterMismatches(String original, String corrected) {
         int mismatches = 0;
         for (int i = 0; i < original.length(); i++) {
@@ -47,6 +63,12 @@ public class SpellCheckService {
         return mismatches + Math.abs(original.length() - corrected.length());
     }
 
+    /**
+     * Метод для поиска орфографических ошибок в тексте с предложенными исправлениями.
+     *
+     * @param text Исходный текст.
+     * @return Карта, содержащая орфографические ошибки и предложенные исправления.
+     */
     public static Map<String, String> findSpellingErrorsWithReplacements(String text) {
         Map<String, String> errorsWithReplacements = new HashMap<>();
         try {

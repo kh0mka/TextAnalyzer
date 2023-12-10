@@ -1,6 +1,16 @@
 package com.shulzhenko.Services;
+
+/**
+ * Класс TextStyleService предоставляет методы для определения стиля текста.
+ */
 public class TextStyleService {
 
+    /**
+     * Метод для определения стиля текста на основе ключевых слов.
+     *
+     * @param text Исходный текст.
+     * @return Строка, представляющая определенный стиль текста или "Не удалось определить стиль".
+     */
     public static String detectStyle(String text) {
         String lowercaseText = text.toLowerCase();
 
@@ -19,6 +29,13 @@ public class TextStyleService {
         }
     }
 
+    /**
+     * Метод для проверки наличия ключевых слов в тексте.
+     *
+     * @param text     Исходный текст.
+     * @param keywords Массив ключевых слов.
+     * @return true, если хотя бы одно ключевое слово найдено в тексте, в противном случае - false.
+     */
     private static boolean containsKeywords(String text, String[] keywords) {
         for (String keyword : keywords) {
             if (text.contains(keyword)) {
@@ -47,6 +64,7 @@ public class TextStyleService {
         };
     }
 
+    // Ниже методы для получения ключевых слов для различных стилей текста.
     private static String[] getBusinessKeywords() {
         return new String[]{
                 "бизнес", "компания", "стратегия", "план", "финансы",
